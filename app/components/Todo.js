@@ -28,7 +28,7 @@ class Todo extends Component {
 
     render() {
      
-        return <View> <Touchable onPress={() => this.props.dispatch(actions.save())}>
+        return <View style={styles.container}> <Touchable onPress={() => this.props.dispatch(actions.save())}>
             <Text> cool </Text>
         </Touchable>
             {this.props.todos.map(this.todoRow)}
@@ -62,3 +62,14 @@ export default connect(mapStateToProps)(Todo)
 //   })
 
 // )(Todo);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // flexDirection: 'column'
+    justifyContent: 'center',
+
+    alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+  }
+})

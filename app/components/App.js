@@ -35,14 +35,14 @@ export class App extends Component {
     const Overlay = ({children, visible}) => (
       (visible) ? (
         <View style={styles.overlay}>
-          <View style={styles.overlMenu}>
+          <View style={styles.overlayMenu}>
             {children}
           </View>
         </View>
       ) : <View />
     )
     const componentFactory = (routeName) => () => (
-      <View>
+      <View style={styles.factory}>
         <Text style={styles.route}>{routeName}</Text></View>
     )
     return (
@@ -81,20 +81,31 @@ export class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // flexDirection: 'column',
+    // justifyContent: 'flex-start',
 
-    alignItems: 'center',
+    //  alignItems: 'stretch',
     // backgroundColor: '#F5FCFF',
   },
   overlay: {
     // width: '400px',
-    alignSelf: 'stretch',
-     width: Dimensions.get('window').width,
-    left: 0, top: 0, flex: 1,
-    position: 'absolute', zIndex: 1,
+    // alignSelf: 'stretch',
+    //  width: Dimensions.get('window').width,
+    // left: 0, top: 0,
+    //  flex: 1,
+    // position: 'absolute',
+     zIndex: 1,
     // alignItems: 'center', justifyContent: 'center',
   },
-  overlMenu: { flexDirection: 'row', padding: 10, height: 50, backgroundColor: 'rgba(0,255,255,0.8)' },
+  factory : {
+   flex: 1,
+        // flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+  },
+  overlayMenu: { flexDirection: 'row', padding: 10, 
+  // height: 50,
+   backgroundColor: 'rgba(0,255,255,0.8)' },
   logo: {
     alignSelf: 'center',
     marginBottom: 10,
