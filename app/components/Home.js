@@ -10,6 +10,8 @@ import {
     Text,
     View,
     Image,
+    Platform,
+    Dimensions
 } from 'react-native';
 
 import { Touchable } from './Touchable';
@@ -20,15 +22,18 @@ import * as actions from '../common/actions'
 export class Home extends Component {
     constructor(props, ctx) {
         super(props, ctx);
-    //    console.log(ctx)
+        //    console.log(ctx)
         this.store = ctx.store
-      //  this.store.subscribe(() => console.log(this.store.getState()))
-    //    this.store.dispatch(actions.ping())
+        //  this.store.subscribe(() => console.log(this.store.getState()))
+        //    this.store.dispatch(actions.ping())
 
     }
     render() {
+       
+
         return (
             <View style={styles.container}>
+   
                 <Image
                     style={styles.logo}
                     source={require('../assets/react-native-web.png')}
@@ -69,6 +74,7 @@ Home.contextTypes = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
