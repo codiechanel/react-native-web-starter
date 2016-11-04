@@ -14,12 +14,19 @@ import {
 
 import { Touchable } from './Touchable';
 import { Home } from './Home';
+import  Todo  from './Todo';
 import { Match, MemoryRouter as Router } from 'react-router';
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import  MyReducer  from '../reducers/MyReducer';
+import  todos  from '../reducers/TodoReducer';
 
-const store = createStore(MyReducer)
+
+const rootReducer = combineReducers({
+   todos, MyReducer
+})
+
+const store = createStore(rootReducer)
 
 export class App extends Component {
   render() {
@@ -32,7 +39,7 @@ export class App extends Component {
       <Router>
         <View style={styles.container}>
           <Match exactly pattern="/" component={Home} />
-          <Match pattern="/about" component={componentFactory('About')} />
+          <Match pattern="/todo" component={ Todo } />
           <Match pattern="/topics" component={componentFactory('Topics')} />
         </View>
       </Router>

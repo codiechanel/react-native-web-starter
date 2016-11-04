@@ -20,10 +20,10 @@ import * as actions from '../common/actions'
 export class Home extends Component {
     constructor(props, ctx) {
         super(props, ctx);
-        console.log(ctx)
+    //    console.log(ctx)
         this.store = ctx.store
-        this.store.subscribe(() => console.log(this.store.getState()))
-        this.store.dispatch(actions.ping())
+      //  this.store.subscribe(() => console.log(this.store.getState()))
+    //    this.store.dispatch(actions.ping())
 
     }
     render() {
@@ -45,10 +45,10 @@ export class Home extends Component {
                         Alt+Cmd+I for dev menu
           </Text>
                 </Touchable>
-                <NavLink to="/about">
+                <NavLink to="/todo">
 
                     <Text style={styles.routeLink}>
-                        About
+                        Todo
                 </Text>
                 </NavLink>
                 <NavLink to="/topics">

@@ -2,7 +2,8 @@
 /*
  * action types
  */
-import { PING, PONG } from './constants'
+import { PING, PONG, SAVE } from './constants'
 
 export const ping = () => ({ type: PING })
+export const save = () => ({ type: SAVE, payload: 'cool' })
 
