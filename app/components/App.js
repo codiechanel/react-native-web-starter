@@ -15,6 +15,11 @@ import {
 import { Touchable } from './Touchable';
 import { Home } from './Home';
 import { Match, MemoryRouter as Router } from 'react-router';
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import  MyReducer  from '../reducers/MyReducer';
+
+const store = createStore(MyReducer)
 
 export class App extends Component {
   render() {
@@ -23,6 +28,7 @@ export class App extends Component {
         <Text style={styles.route}>{routeName}</Text></View>
     )
     return (
+      <Provider store={store} >
       <Router>
         <View style={styles.container}>
           <Match exactly pattern="/" component={Home} />
@@ -30,6 +36,7 @@ export class App extends Component {
           <Match pattern="/topics" component={componentFactory('Topics')} />
         </View>
       </Router>
+      </Provider>
     );
   }
 }

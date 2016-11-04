@@ -17,6 +17,14 @@ import { NavLink } from './NavLink';
 import { Match, MemoryRouter as Router } from 'react-router';
 
 export class Home extends Component {
+    constructor(props, ctx) {
+        super(props, ctx);
+        console.log(ctx)
+        this.store = ctx.store
+        this.store.subscribe(() => console.log(this.store.getState()))
+        this.store.dispatch({type: 'PING'})
+
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -51,6 +59,11 @@ export class Home extends Component {
         );
     }
 }
+
+Home.contextTypes = {
+    store: React.PropTypes.object.isRequired,
+}
+
 
 const styles = StyleSheet.create({
     container: {
