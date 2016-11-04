@@ -15,6 +15,7 @@ import {
 import { Touchable } from './Touchable';
 import { NavLink } from './NavLink';
 import { Match, MemoryRouter as Router } from 'react-router';
+import * as actions from '../common/actions'
 
 export class Home extends Component {
     constructor(props, ctx) {
@@ -22,7 +23,7 @@ export class Home extends Component {
         console.log(ctx)
         this.store = ctx.store
         this.store.subscribe(() => console.log(this.store.getState()))
-        this.store.dispatch({type: 'PING'})
+        this.store.dispatch(actions.ping())
 
     }
     render() {
