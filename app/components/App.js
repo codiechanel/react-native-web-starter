@@ -13,28 +13,23 @@ import {
 } from 'react-native';
 
 import { Touchable } from './Touchable';
+import { Home } from './Home';
+import { Match, MemoryRouter as Router } from 'react-router';
 
 export class App extends Component {
   render() {
+    const componentFactory = (routeName) => () => (
+      <View>
+        <Text style={styles.route}>{routeName}</Text></View>
+    )
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require('../assets/react-native-web.png')}
-        />
-        <Touchable style={styles.touchable} onPress={()=> console.log("Can't touched this?")}>
-          <Text style={styles.welcome}>
-            Welcome to React Native for Web Starter!
-          </Text>
-          <Text style={styles.instructions}>
-            To get started, edit index.web.js
-          </Text>
-          <Text style={styles.instructions}>
-            Press Cmd+R to reload,{'\n'}
-            Alt+Cmd+I for dev menu
-          </Text>
-        </Touchable>
-      </View>
+      <Router>
+        <View style={styles.container}>
+          <Match exactly pattern="/" component={Home} />
+          <Match pattern="/about" component={componentFactory('About')} />
+          <Match pattern="/topics" component={componentFactory('Topics')} />
+        </View>
+      </Router>
     );
   }
 }
@@ -62,5 +57,9 @@ const styles = StyleSheet.create({
   },
   touchable: {
     backgroundColor: '#CAE6FE',
+  },
+  route: {
+    color: '#701010',
+    fontSize: 40
   },
 });
