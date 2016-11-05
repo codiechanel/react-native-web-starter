@@ -2,8 +2,10 @@
 /*
  * action types
  */
-import { PING, PONG, SAVE } from './constants'
+import * as constant from './constants'
 
-export const ping = () => ({ type: PING })
-export const save = () => ({ type: SAVE, payload: 'cool' })
+export const ping = () => ({ type: constant.PING })
+export const save = () => ({ type: constant.SAVE, payload: 'cool' })
+export const makeAjaxRequest = options => ({ type: constant.FETCH_REQUEST, payload: options })
+export const ajaxFulfilled = payload => ({ type: constant.FETCH_FULFILLED, payload })
 

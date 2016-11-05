@@ -22,13 +22,17 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import MyReducer from '../reducers/MyReducer';
 import todos from '../reducers/TodoReducer';
+import { rootEpic } from '../epics/rxEpic'
+import { combineEpics, createEpicMiddleware } from 'redux-observable'
 
+const epicMiddleware = createEpicMiddleware(rootEpic)
 
 const rootReducer = combineReducers({
   todos, MyReducer
 })
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer,
+applyMiddleware(epicMiddleware))
 
 export class App extends Component {
   render() {

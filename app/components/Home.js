@@ -24,16 +24,25 @@ export class Home extends Component {
         super(props, ctx);
         //    console.log(ctx)
         this.store = ctx.store
-        //  this.store.subscribe(() => console.log(this.store.getState()))
-        //    this.store.dispatch(actions.ping())
 
     }
+    componentDidMount() {
+        this.store.subscribe(() => console.log(this.store.getState()))
+   
+        const endpoint = 'https://www.google.com'
+        const settings = {
+            url: endpoint,
+            responseType: 'json',
+        }
+        this.store.dispatch(actions.makeAjaxRequest(settings))
+    }
+
     render() {
-       
+
 
         return (
             <View style={styles.container}>
-   
+
                 <Image
                     style={styles.logo}
                     source={require('../assets/react-native-web.png')}
